@@ -4,14 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - Resto-Bar</title>
+    <title>Menu- VAGUE D'OR</title>
+    <link rel="icon" type="image/png" href="../assets/images/logo.png" />
     <link rel="stylesheet" href="../css/styles.css">
+    
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
     <header class="header">
-        <h1 class="logo">Resto-Bar</h1>
+        <div class="logo">
+            <img src="../assets/images/logo.png" alt="logo du site">
+            <h1 class="logo">VAGUE D'OR</h1>
+        </div>
         <nav>
             <a href="../index.html">Accueil</a>
             <a href="./menu.html" class="active">Menu</a>
@@ -21,6 +34,11 @@
 
     <section class="menu-section">
         <h2>Notre Menu</h2>
+        
+        <div class="search__bar">
+            <input type="text" name="search" id="search" placeholder="rechercher un plat">
+        </div>
+
         <div id="menu-container" class="menu-grid"></div>
     </section>
 

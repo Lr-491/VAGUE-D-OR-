@@ -1,0 +1,39 @@
+VAGUE D'OR/
+├── backend/                  # Backend (Express + PostgreSQL)
+│   ├── config/               # Configuration de la base de données, CORS, etc.
+│   ├── models/               # Modèles Sequelize (ou autre ORM)
+│   ├── routes/               # Routes de l'API Express
+│   ├── controllers/          # Logique des contrôleurs pour gérer les requêtes
+│   ├── middleware/           # Middleware comme l'authentification
+│   ├── server.js             # Point d'entrée du serveur Express
+│   └── .env                  # Variables d'environnement pour les clés secrètes, DB
+├── frontend/                 # Frontend (React)
+│   ├── public/               # Fichiers statiques, comme index.html, images
+│   ├── src/                  # Source du code React
+│   │   ├── components/       # Composants React réutilisables
+│   │   ├── pages/            # Pages de l'application React
+│   │   ├── App.js            # Composant principal de l'application React
+│   │   └── index.js          # Point d'entrée de React
+│   ├── .env                  # Variables d'environnement pour React (API_URL, etc.)
+│   └── package.json          # Gestion des dépendances et scripts pour React
+└── .gitignore                # Pour ignorer les fichiers et dossiers non souhaités
+
+
+1./ Installation des packages nécessaires pour Express et PostgreSQL
+  
+npm install express pg pg-hstore cors dotenv
+npm init -y
+npm install express pg cors dotenv nodemon
+
+express : Framework pour créer l'API backend.
+
+pg : Client PostgreSQL pour exécuter des requêtes SQL directement.
+
+cors : Middleware pour gérer les requêtes inter-domaines entre ton frontend et backend.
+
+dotenv : Pour gérer les variables d'environnement (comme les informations de connexion à la base de données).
+
+2./ Création de la structure du backend
+
+mkdir config controllers middleware models routes
+touch config/database.js controllers/commandeController.js middleware/authMiddleware.js models/commande.js routes/commandeRoutes.js server.js .env

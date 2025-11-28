@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - Resto-Bar</title>
+    <title>Accueil - VAGUE D'OR</title>
+    <link rel="icon" type="image/png" href="./assets/images/logo.png" />
     <link rel="stylesheet" href="./css/styles.css">
+
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,18 +20,34 @@
 <body>
 
     <header class="header">
-        <h1 class="logo">Resto-Bar</h1>
+        <div class="logo">
+            <img src="./assets/images/logo.png" alt="logo du site">
+            <h1 class="logo">VAGUE D'OR</h1>
+        </div>
         <nav>
             <a href="index.html" class="active">Accueil</a>
             <a href="./pages/menu.html">Menu</a>
             <a href="./pages/checkout.html">Panier</a>
         </nav>
+
+        <!-- BOUTON FERMER -->
+        <div class="nav__close" id="nav-close">
+            <i class="bx bx-x"></i>
+        </div>
+
+        <!-- BOUTON À DROITE (USER / PANIER / BURGER)-->
+         <div class="nav__btns">
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="bx bx-grid-alt"></i>
+            </div>
+         </div>
+
     </header>
 
     <!-- SECTION HERO -->
     <section class="hero">
         <div class="hero-content">
-            <h2 class="fade-in">Bienvenue au <span>Resto-Bar</span></h2>
+            <h2 class="fade-in">Bienvenue à la <span>VAGUE D'OR</span></h2>
             <p class="fade-in">Des saveurs exceptionnelles – Livraison rapide – Qualité premium</p>
             <a class="btn slide-up" href="./pages/menu.html">Voir le Menu</a>
         </div>
@@ -42,19 +63,19 @@
 
         <div class="popular-grid">
             <div class="popular-card fade-in">
-                <img src="./assets/images/poulet.jpg" alt="Poulet braisé">
+                <img src="./assets/images/meet.jpeg" alt="Poulet braisé">
                 <h3>Poulet braisé</h3>
                 <p>4500 FCFA</p>
             </div>
 
             <div class="popular-card fade-in">
-                <img src="./assets/images/burger.jpg" alt="Burger spécial">
+                <img src="./assets/images/Hamburguer .jpeg" alt="Burger spécial">
                 <h3>Burger Spécial</h3>
                 <p>3500 FCFA</p>
             </div>
 
             <div class="popular-card fade-in">
-                <img src="./assets/images/poisson.jpg" alt="Poisson grillé">
+                <img src="./assets/images/hero-food.jpg" alt="Poisson grillé">
                 <h3>Poisson Grillé</h3>
                 <p>5000 FCFA</p>
             </div>
@@ -68,6 +89,34 @@
         <p>© 2025 Resto-Bar — Tous droits réservés</p>
     </footer>
 
+    <script>
+        /* --- MENU NAVIGATION --- */
+        const navMenu = document.getElementById('nav-menu');
+        const navToggle = document.getElementById('nav-toggle');
+        const navClose = document.getElementById('nav-close');
+
+        // Ouvrir le menu
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu');
+            });
+        }
+
+        // Fermer le menu
+        if (navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        }
+
+        // Fermer le menu quand on clique sur un lien
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link =>
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            })
+        );
+    </script>
 </body>
 
 </html>

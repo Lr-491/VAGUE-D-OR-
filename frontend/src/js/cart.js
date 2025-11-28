@@ -1,6 +1,9 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let container = document.getElementById("cart-container");
 let totalElement = document.getElementById("total");
+let totalElementLivraison = document.getElementById("livraison_livraison");
+
+const livraison = 1500;
 
 function loadCart() {
     container.innerHTML = "";
@@ -11,6 +14,7 @@ function loadCart() {
         div.className = "cart-item";
         div.innerHTML = `
             <p>${item.name} — ${item.price} FCFA</p>
+            <img src=${item.img} alt=${item.name}>
             <button onclick="removeItem(${index})">Supprimer</button>
         `;
         container.appendChild(div);
@@ -18,6 +22,8 @@ function loadCart() {
     });
 
     totalElement.innerText = "Total : " + total + " FCFA";
+    totalElement.style.marginTop = "50px"
+    totalElementLivraison.innerHTML = `Total + livraison : ${total + livraison} FCFA`
 }
 
 function removeItem(index) {
