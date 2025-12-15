@@ -19,30 +19,32 @@
 
 <body>
 
-    <header class="header">
-        <div class="logo">
-            <img src="./assets/images/logo.png" alt="logo du site">
-            <h1 class="logo">VAGUE D'OR</h1>
-        </div>
-        <nav>
-            <a href="index.html" class="active">Accueil</a>
-            <a href="./pages/menu.html">Menu</a>
-            <a href="./pages/checkout.html">Panier</a>
-        </nav>
+<header class="header">
+    <div class="logo">
+        <img src="./assets/images/logo.png" alt="logo du site">
+        <h1>VAGUE D'OR</h1>
+    </div>
+
+    <nav class="nav" id="nav-menu">
+        <a href="index.html" class="active">Accueil</a>
+        <a href="./pages/menu.html">Menu</a>
+        <a href="./pages/checkout.html">Panier</a>
 
         <!-- BOUTON FERMER -->
         <div class="nav__close" id="nav-close">
             <i class="bx bx-x"></i>
         </div>
+    </nav>
 
-        <!-- BOUTON À DROITE (USER / PANIER / BURGER)-->
-         <div class="nav__btns">
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="bx bx-grid-alt"></i>
-            </div>
-         </div>
+    <!-- BOUTON BURGER -->
+    <div class="nav__btns">
+        <div class="nav__toggle" id="nav-toggle">
+            <i class="bx bx-grid-alt"></i>
+        </div>
+    </div>
+</header>
 
-    </header>
+<div class="nav-overlay" id="nav-overlay"></div>
 
     <!-- SECTION HERO -->
     <section class="hero">
@@ -89,34 +91,35 @@
         <p>© 2025 Resto-Bar — Tous droits réservés</p>
     </footer>
 
-    <script>
-        /* --- MENU NAVIGATION --- */
-        const navMenu = document.getElementById('nav-menu');
-        const navToggle = document.getElementById('nav-toggle');
-        const navClose = document.getElementById('nav-close');
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const navMenu = document.getElementById("nav-menu");
+        const navToggle = document.getElementById("nav-toggle");
+        const navClose = document.getElementById("nav-close");
+        const navLinks = document.querySelectorAll(".nav a");
 
-        // Ouvrir le menu
-        if (navToggle) {
-            navToggle.addEventListener('click', () => {
-                navMenu.classList.add('show-menu');
-            });
-        }
+ navToggle.addEventListener("click", () => {
+        navMenu.classList.add("show-menu");
+        overlay.classList.add("show-overlay");
+    });
 
-        // Fermer le menu
-        if (navClose) {
-            navClose.addEventListener('click', () => {
-                navMenu.classList.remove('show-menu');
-            });
-        }
+    navClose.addEventListener("click", () => {
+        navMenu.classList.remove("show-menu");
+        overlay.classList.remove("show-overlay");
+    });
 
-        // Fermer le menu quand on clique sur un lien
-        const navLinks = document.querySelectorAll('.nav__link');
-        navLinks.forEach(link =>
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('show-menu');
-            })
-        );
-    </script>
+    overlay.addEventListener("click", () => {
+        navMenu.classList.remove("show-menu");
+        overlay.classList.remove("show-overlay");
+    });
+    });
+    const overlay = document.getElementById("nav-overlay");
+
+   
+
+</script>
+
+
 </body>
 
 </html>

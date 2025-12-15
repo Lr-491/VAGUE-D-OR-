@@ -35,12 +35,14 @@ body {
    HEADER & NAVIGATION
 ========================================================= */
 .header {
-    background: var(--black);
-    color: white;
+    background: var(--gold);
+    color: var(--black);
     padding: 15px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 1000;
 }
 
 header img {
@@ -53,13 +55,19 @@ header img {
 
 header .logo {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
+
+/* ================= NAV ================= */
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
 .header nav a {
-    color: var(--gold);
+    color: var(--light);
     margin: 0 10px;
-    text-decoration: none;
     font-weight: 600;
 }
 
@@ -67,31 +75,46 @@ header .logo {
     text-decoration: underline;
 }
 
-/* Boutons et icons */
-header .nav__btns {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
+/* ================= BOUTONS ================= */
+
+.nav__btns {
+    display: flex;
+    align-items: center;
 }
 
 .nav__toggle,
 .nav__close {
-  font-size: 2rem;
-  cursor: pointer;
-  transition: var(--transition);
+    font-size: 2rem;
+    cursor: pointer;
 }
 
-.nav__toggle:hover,
-.nav__close:hover {
-  color: var(--light);
+.nav__toggle {
+    color: var(--light);
 }
 
-/* Bouton de fermeture */
+/* Bouton fermer */
 .nav__close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--light);
 }
+
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 900;
+}
+
+.nav-overlay.show-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
 
 /* HERO SECTION */
 .hero {
@@ -310,6 +333,23 @@ header .nav__btns {
     cursor: pointer;
 }
 
+/* ===============================
+   ANIMATION DES CARTES AU SCROLL
+================================ */
+
+.card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Quand la carte devient visible */
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 /* Checkout */
 
 .checkout-section {
@@ -433,4 +473,67 @@ header .nav__btns {
         grid-template-columns: 1fr;
     }
 }
+/* ===============================
+   NAVBAR RESPONSIVE MOBILE
+================================ */
 
+@media screen and (max-width: 768px) {
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--black);
+        flex-direction: column;
+        padding: 4rem 2rem;
+        gap: 2rem;
+        
+        /* Animation */
+        opacity: 0;
+        transform: translateX(30px);
+        transition: right 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+
+        z-index: 1000;
+    }
+
+    .nav a {
+        font-size: 1.2rem;
+        transition: color 0.3s;
+    }
+
+    /* Menu visible */
+    .nav.show-menu {
+        right: 0;
+    }
+
+     /* Menu ouvert */
+    .nav.show-menu {
+        right: 0;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Burger visible */
+    .nav__toggle {
+        display: block;
+    }
+}
+
+/* ================= DESKTOP ================= */
+
+@media screen and (min-width: 769px) {
+
+    .nav__toggle,
+    .nav__close {
+        display: none;
+    }
+
+    .nav {
+        position: static;
+        height: auto;
+        flex-direction: row;
+        gap: 1rem;
+    }
+}

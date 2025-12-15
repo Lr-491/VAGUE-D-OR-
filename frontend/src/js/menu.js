@@ -1,5 +1,6 @@
 const container = document.getElementById("menu-container");
 
+// Création des cartes
 menuData.forEach(item => {
     const card = document.createElement("div");
     card.className = "card";
@@ -13,6 +14,33 @@ menuData.forEach(item => {
 
     container.appendChild(card);
 });
+
+// =====================
+// INTERSECTION OBSERVER
+// =====================
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target); // animation une seule fois
+            }
+        });
+    },
+    {
+        threshold: 0.2 // 20% visible
+    }
+);
+
+// Observer chaque carte
+const cards = document.querySelectorAll(".card");
+cards.forEach(card => observer.observe(card));
+
+
+// =====================
+// PANIER
+// =====================
 
 function addToCart(id) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
