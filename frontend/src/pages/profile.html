@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - VAGUE D'OR</title>
+    <link rel="icon" type="image/png" href="./assets/images/logo.png" />
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", () => {
+
+                // Supprimer les infos de connexion
+                localStorage.removeItem("isLoggedIn");
+                sessionStorage.removeItem("isLoggedIn");
+
+                alert("Vous avez été déconnecté.");
+
+                // Redirection
+                window.location.href = "login.html";
+            });
+        }
+</script>
+
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        <img src="../assets/images/logo.png" alt="logo du site">
+        <h1>VAGUE D'OR</h1>
+    </div>
+
+    <nav class="nav" id="nav-menu">
+        <a href="../index.html" class="active">Accueil</a>
+        <a href="./menu.html">Menu</a>
+        <a href="./checkout.html">Panier</a>
+        <a href="./profile.html">Profile</a>
+
+        <!-- BOUTON FERMER -->
+        <div class="nav__close" id="nav-close">
+            <i class="bx bx-x"></i>
+        </div>
+    </nav>
+
+    <!-- BOUTON BURGER -->
+    <div class="nav__btns">
+        <div class="nav__toggle" id="nav-toggle">
+            <i class="bx bx-grid-alt"></i>
+        </div>
+    </div>
+</header>
+
+<div class="nav-overlay" id="nav-overlay"></div>
+
+    <!-- SECTION  PROFILE -->
+     <section class="profile">
+    <h2 class="section-title">Profil du restaurant</h2>
+
+    <div class="profile-card">
+
+        <!-- Infos principales -->
+        <div class="profile-left">
+            <img src="../assets/images/Chef-cook-food-gold-logo.jpeg" alt="Logo restaurant">
+
+            <h3 id="restaurant-name"></h3>
+            <p class="tag">Restaurant & Resto-Bar</p>
+
+            <ul class="info-list">
+                <li><i class='bx bx-user'></i> <span id="restaurant-owner"></span></li>
+                <li><i class='bx bx-phone'></i> <span id="restaurant-phone"></span></li>
+                <li><i class='bx bx-envelope'></i> <span id="restaurant-email"></span></li>
+                <li><i class='bx bx-map'></i> <span id="restaurant-address"></span></li>
+                <li><i class='bx bx-time'></i> <span id="restaurant-hours"></span></li>
+            </ul>
+
+            <button id="logoutBtn" class="logout-btn">
+                <i class='bx bx-log-out'></i> Déconnexion
+            </button>
+        </div>
+
+        <!-- Infos secondaires -->
+        <div class="profile-right">
+            <h4>Informations</h4>
+
+            <p><strong>En activité depuis :</strong> <span id="restaurant-since"></span></p>
+
+            <p><strong>Moyens de paiement :</strong></p>
+            <div class="badges" id="payment-badges"></div>
+
+            <h4>Statistiques</h4>
+            <div class="stats">
+                <div class="stat">
+                    <h5 id="total-orders">0</h5>
+                    <p>Commandes</p>
+                </div>
+                <div class="stat">
+                    <h5 id="total-revenue">0 FCFA</h5>
+                    <p>Revenus</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Historique -->
+    <div class="history">
+        <h3>Historique des commandes</h3>
+        <div id="history-container"></div>
+    </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2025 Resto-Bar — Tous droits réservés</p>
+    </footer>
+
+<script>
+    if (!localStorage.getItem("isLoggedIn")) {
+        window.location.href = "connexion.html";
+        }
+        
+    document.addEventListener("DOMContentLoaded", () => {
+        const navMenu = document.getElementById("nav-menu");
+        const navToggle = document.getElementById("nav-toggle");
+        const navClose = document.getElementById("nav-close");
+        const navLinks = document.querySelectorAll(".nav a");
+
+    navToggle.addEventListener("click", () => {
+            navMenu.classList.add("show-menu");
+            overlay.classList.add("show-overlay");
+        });
+
+        navClose.addEventListener("click", () => {
+            navMenu.classList.remove("show-menu");
+            overlay.classList.remove("show-overlay");
+        });
+
+        overlay.addEventListener("click", () => {
+            navMenu.classList.remove("show-menu");
+            overlay.classList.remove("show-overlay");
+        });
+        });
+    const overlay = document.getElementById("nav-overlay");
+    const restaurantProfile = {
+        name: "VAGUE D'OR",
+        owner: "John Doe",
+        phone: "+237 6 12 34 56 78",
+        email: "contact@vaguedor.com",
+        address: "Bonamoussadi, Douala - Cameroun",
+        openHours: "10h00 - 23h00",
+        paymentMethods: ["Chèque", "MTN Money", "Airtel Money"],
+        since: "2022"
+    };
+
+   // PROFIL
+    document.getElementById("restaurant-name").innerText = restaurantProfile.name;
+    document.getElementById("restaurant-owner").innerText = restaurantProfile.owner;
+    document.getElementById("restaurant-phone").innerText = restaurantProfile.phone;
+    document.getElementById("restaurant-email").innerText = restaurantProfile.email;
+    document.getElementById("restaurant-address").innerText = restaurantProfile.address;
+    document.getElementById("restaurant-hours").innerText = restaurantProfile.openHours;
+    document.getElementById("restaurant-since").innerText = restaurantProfile.since;
+
+    // Paiements
+    const badgeContainer = document.getElementById("payment-badges");
+    restaurantProfile.paymentMethods.forEach(method => {
+        const span = document.createElement("span");
+        span.innerText = method;
+        badgeContainer.appendChild(span);
+    });
+
+    // Historique commandes (simulation)
+    const history = JSON.parse(localStorage.getItem("orders")) || [];
+
+    const historyContainer = document.getElementById("history-container");
+    let revenue = 0;
+
+    history.forEach(order => {
+    const div = document.createElement("div");
+    div.className = "history-item";
+    div.innerHTML = `
+        <span>${order.date}</span>
+        <span>${order.total} FCFA</span>
+        <span>${order.payment}</span>
+    `;
+    historyContainer.appendChild(div);
+    revenue += order.total;
+    });
+
+    document.getElementById("total-orders").innerText = history.length;
+    document.getElementById("total-revenue").innerText = revenue + " FCFA";
+
+</script>
+
+
+</body>
+
+</html>

@@ -23,6 +23,7 @@
             <a href="../index.html">Accueil</a>
             <a href="menu.html">Menu</a>
             <a href="checkout.html" class="active">Panier</a>
+            <a href="profile.html">Profile</a>
         </nav>
     </header>
 
@@ -32,8 +33,30 @@
         <h3 id="total"></h3>
         <h4 id="livraison">Livraison : <strong>1 500 FCFA</strong></h4>
         <h4 id="livraison_livraison"></h4>
-        <button class="btn" onclick="validateOrder()">Valider la commande</button>
+        <!-- <button class="btn" onclick="validateOrder()">Valider la commande</button> -->
     </section>
+
+        <div class="payment-method">
+        <h3>Moyen de paiement</h3>
+
+        <label>
+            <input type="radio" name="payment" value="cheque">
+            Paiement par chèque
+        </label>
+
+        <label>
+            <input type="radio" name="payment" value="mtn">
+            MTN Mobile Money
+        </label>
+
+        <label>
+            <input type="radio" name="payment" value="airtel">
+            Airtel Money
+        </label>
+    </div>
+
+    <button class="btn" onclick="validateOrder()">Valider la commande</button>
+
 
     <script src="../js/cart.js"></script>
 

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu- VAGUE D'OR</title>
+    <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <section class="form-section">
+    <div class="form-card">
+            <h1>Créer un compte</h1>
+            <p class="subtitle">Rejoignez VAGUE D'OR</p>
+
+            <form id="form">
+                <div class="form-group">
+                    <label for="fullName">Nom complet</label>
+                    <input type="text" id="fullName" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="johndoe@gmail.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" placeholder="+237 6XX XXX XXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mdp">Mot de passe</label>
+                    <input type="password" id="mdp" placeholder="********" required>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <span class="btn-text">S'inscrire</span>
+                    <span class="loader"></span>
+                </button>
+
+                <p class="switch-form">
+                    deja un  compte ?
+                    <a href="connexion.html"> Connexion</a>
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        const form = document.getElementById("form");
+        const button = document.querySelector(".btn-submit");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            // Loader ON
+            button.classList.add("loading");
+            button.disabled = true;
+
+            const userData = {
+                fullName: document.getElementById("fullName").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                password: document.getElementById("mdp").value
+            };
+
+            // Simulation requête serveur
+            setTimeout(() => {
+                localStorage.setItem("userProfile", JSON.stringify(userData));
+
+                button.classList.remove("loading");
+                button.disabled = false;
+
+                alert("Inscription réussie !");
+                form.reset();
+
+                // Redirection 
+                window.location.href = "profile.html";
+
+            }, 1500);
+        });
+    </script>
+
+
+</body>
+
+</html>

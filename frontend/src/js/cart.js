@@ -3,6 +3,13 @@ let container = document.getElementById("cart-container");
 let totalElement = document.getElementById("total");
 let totalElementLivraison = document.getElementById("livraison_livraison");
 
+if (
+    !localStorage.getItem("isLoggedIn") &&
+    !sessionStorage.getItem("isLoggedIn")
+) {
+    window.location.href = "login.html";
+}
+
 const livraison = 1500;
 
 function loadCart() {
@@ -39,3 +46,42 @@ function validateOrder() {
 }
 
 loadCart();
+function validateOrder() {
+
+    // Récupérer le moyen de paiement choisi
+    const paymentSelected = document.querySelector('input[name="payment"]:checked');
+
+    // Vérification
+    if (!paymentSelected) {
+        alert("Veuillez choisir un moyen de paiement avant de valider.");
+        return;
+    }
+
+    const paymentMethod = paymentSelected.value;
+
+    // Message selon le mode de paiement
+    let message = "";
+
+    switch (paymentMethod) {
+        case "cheque":
+            message = "Commande validée.\nPaiement par chèque à la livraison.";
+            break;
+
+        case "mtn":
+            message = "Commande validée.\nVous serez contacté pour le paiement MTN.";
+            break;
+
+        case "airtel":
+            message = "Commande validée.\nVous serez contacté pour le paiement Airtel.";
+            break;
+    }
+
+    alert(message);
+
+    // Vider le panier
+    localStorage.removeItem("cart");
+
+    localStorage.setItem("orders", JSON.stringify(cart));
+    // Redirection
+    window.location.href = "../index.html";
+}
