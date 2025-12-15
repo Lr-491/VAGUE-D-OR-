@@ -25,12 +25,23 @@
             <img src="../assets/images/logo.png" alt="logo du site">
             <h1 class="logo">VAGUE D'OR</h1>
         </div>
-        <nav>
+        <nav class="nav" id="nav-menu">
             <a href="../index.html">Accueil</a>
             <a href="./menu.html" class="active">Menu</a>
             <a href="./checkout.html">Panier</a>
             <a href="./profile.html">Profile</a>
+            <!-- BOUTON FERMER -->
+            <div class="nav__close" id="nav-close">
+                <i class="bx bx-x"></i>
+            </div>
         </nav>
+
+        <!-- BOUTON BURGER -->
+        <div class="nav__btns">
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="bx bx-grid-alt"></i>
+            </div>
+        </div>
     </header>
 
     <section class="menu-section">
@@ -43,6 +54,7 @@
         <div id="menu-container" class="menu-grid"></div>
     </section>
 
+    <script src="../js/main.js"></script>
     <script src="../js/data.js"></script>
     <script src="../js/menu.js"></script>
 

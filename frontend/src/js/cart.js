@@ -7,7 +7,7 @@ if (
     !localStorage.getItem("isLoggedIn") &&
     !sessionStorage.getItem("isLoggedIn")
 ) {
-    window.location.href = "login.html";
+    window.location.href = "connexion.html";
 }
 
 const livraison = 1500;

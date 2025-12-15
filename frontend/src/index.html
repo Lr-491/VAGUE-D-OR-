@@ -92,75 +92,8 @@
         <p>© 2025 Resto-Bar — Tous droits réservés</p>
     </footer>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const navMenu = document.getElementById("nav-menu");
-        const navToggle = document.getElementById("nav-toggle");
-        const navClose = document.getElementById("nav-close");
-        const navLinks = document.querySelectorAll(".nav a");
-
- navToggle.addEventListener("click", () => {
-        navMenu.classList.add("show-menu");
-        overlay.classList.add("show-overlay");
-    });
-
-    navClose.addEventListener("click", () => {
-        navMenu.classList.remove("show-menu");
-        overlay.classList.remove("show-overlay");
-    });
-
-    overlay.addEventListener("click", () => {
-        navMenu.classList.remove("show-menu");
-        overlay.classList.remove("show-overlay");
-    });
-    });
-    const overlay = document.getElementById("nav-overlay");
-
-   
-
-</script>
-
+    <script src="./js/main.js"></script>
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - Resto-Bar</title>
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-
-<body>
-
-    <header class="header">
-        <h1 class="logo">Resto-Bar</h1>
-        <nav>
-            <a href="index.html">Accueil</a>
-            <a href="./pages/menu.html" class="active">Menu</a>
-            <a href="./pages/checkout.html">Panier</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h2>Bienvenue dans notre Resto-Bar</h2>
-        <p>Livraison rapide – Qualité premium</p>
-        <a class="btn" href="./pages/menu.html">Voir le Menu</a>
-    </section>
-
-
-
-</body>
-
-</html> -->

@@ -58,17 +58,6 @@
 
         const remember = document.getElementById("rememberMe").checked;
 
-        if (email === savedUser.email && password === savedUser.password) {
-
-            if (remember) {
-                localStorage.setItem("isLoggedIn", "true");
-            } else {
-                sessionStorage.setItem("isLoggedIn", "true");
-            }
-
-            window.location.href = "profile.html";
-        }
-
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
@@ -101,6 +90,16 @@
                 button.classList.remove("loading");
                 button.disabled = false;
             }, 1200);
+             if (email === savedUser.email && password === savedUser.password) {
+
+        if (remember) {
+            localStorage.setItem("isLoggedIn", "true");
+        } else {
+            sessionStorage.setItem("isLoggedIn", "true");
+        }
+
+        window.location.href = "profile.html";
+    }
         });
 
         function showError(message) {
